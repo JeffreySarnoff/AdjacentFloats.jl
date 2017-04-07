@@ -9,7 +9,7 @@ And they step twice when given values of very small magnitude (see paper).
 The alternative implementation, converting to [U]Int and adding/subtracting 1,    
 returns NaN when given +/-Inf; and checking for Inf adds branching.    
 
-ref:   
+refs:   
 
 Siegfried Rump, Paul Zimmermann, Sylvie Boldo, Guillaume Melquiond.    
 Computing predecessor and successor in rounding to nearest.    
