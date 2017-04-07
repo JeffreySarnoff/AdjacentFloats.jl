@@ -26,4 +26,3 @@ next_awayfrom_zero(x::Float16) = signbit(x) ? prevfloat(x) : nextfloat(x)
 
 
 end # module
-
