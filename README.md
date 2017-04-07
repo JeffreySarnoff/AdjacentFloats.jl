@@ -7,7 +7,7 @@ That differs from nextfloat(-Inf) == -realmax(), prevfloat(Inf) == realmax()
 And they step twice when given values of very small magnitude (see paper).    
 
 The alternative implementation, converting to [U]Int and adding/subtracting 1,    
-returns NaN when given +/-Inf -- and checking for Inf adds branching.    
+returns NaN when given +/-Inf; and checking for Inf adds branching.    
 
 ref:   
 
