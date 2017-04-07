@@ -2,7 +2,7 @@
 Faster versions of nextfloat, prevfloat that work similarly.
 
 
-### exports
+## exports
 next_float, prev_float
 
 ### notes
