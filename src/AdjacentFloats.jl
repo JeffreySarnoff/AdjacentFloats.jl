@@ -4,7 +4,7 @@ export prev_float, next_float
 
 using Compat
 
-# exact for |x| > 8.900295434028806e-308, otherwise may be two steps rather than one step
+# exact for |x| > 8.900295434028806e-308, otherwise may be two steps rather than one step. |x| > ldexp(0.5, -1019)
 next_nearerto_zero(x::Float64)   = (0.9999999999999999*x)-5.0e-324 # (x-1.1102230246251568e-16*x)-5.0e-324 
 next_awayfrom_zero(x::Float64)   = (1.0000000000000002*x)+5.0e-324 # (x+1.1102230246251568e-16*x)+5.0e-324
 
