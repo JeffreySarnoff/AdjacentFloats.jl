@@ -13,7 +13,8 @@
 
 
 ## exports
-next_float, prev_float
+next_float, prev_float    
+*they run twice as fast as nextfloat, prevfloat (or better)*
 
 -----------
 
