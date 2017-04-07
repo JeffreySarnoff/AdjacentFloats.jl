@@ -17,7 +17,7 @@ next_awayfrom_zero(x::Float32)   = (1.00000010f0*x)+1.435f-42      # (x+5.960465
 next_nearerto_zero(x::Float16) = (x < 0) ? nextfloat(x) : prevfloat(x)
 next_awayfrom_zero(x::Float16) = (x < 0) ? prevfloat(x) : nextfloat(x)
 
-const IEEEFloat = Union{:Float64, :Float32, :Float16}
+const IEEEFloat = Union{Float64, Float32, Float16}
 
 next_float{T<:IEEEFloat}(x::T) = signbit(x) ? next_nearerto_zero(x) : next_awayfrom_zero(x)
 prev_float{T<:IEEEFloat}(x::T) = signbit(x) ? next_awayfrom_zero(x) : next_nearerto_zero(x)
