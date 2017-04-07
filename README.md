@@ -21,7 +21,7 @@ next_float, prev_float
 ### notes
 These routines return +/-Inf when given +/-Inf.    
 That differs from nextfloat(-Inf) == -realmax(), prevfloat(Inf) == realmax()    
-(prevfloat(Inf)==Inf makes more sense to me, and likely is more helpful).
+* prevfloat(Inf)==Inf makes more sense to me, and likely is more helpful *
 
 And they may step as much as two times when given values of very small magnitude (see paper).    
 
