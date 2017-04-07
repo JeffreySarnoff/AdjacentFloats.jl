@@ -5,10 +5,10 @@ export prev_float, next_float
 using Compat
 
 
-const IEEEFloat = Union{Float64, Float32, Float16}
+const IEEE754 = Union{Float64, Float32, Float16}
 
-next_float{T<:IEEEFloat}(x::T) = signbit(x) ? next_nearerto_zero(x) : next_awayfrom_zero(x)
-prev_float{T<:IEEEFloat}(x::T) = signbit(x) ? next_awayfrom_zero(x) : next_nearerto_zero(x)
+next_float{T<:IEEE754}(x::T) = signbit(x) ? next_nearerto_zero(x) : next_awayfrom_zero(x)
+prev_float{T<:IEEE754}(x::T) = signbit(x) ? next_awayfrom_zero(x) : next_nearerto_zero(x)
 
 
 # exact for |x| > 8.900295434028806e-308, otherwise may be two steps rather than one step. |x| > ldexp(0.5, -1019)
