@@ -21,8 +21,8 @@ next_awayfrom_zero(x::Float32)   = muladd(1.00000010f0, x, +1.435f-42)       # (
 
 # the multiplicative formulation for Float16 is exact for |x| > Float16(0.25)
 # which is quite coarse, we do not use that here. Exact for all finite Float16s.
-next_nearerto_zero(x::Float16) = (x < 0) ? nextfloat(x) : prevfloat(x)
-next_awayfrom_zero(x::Float16) = (x < 0) ? prevfloat(x) : nextfloat(x)
+next_nearerto_zero(x::Float16) = signbit(x) ? nextfloat(x) : prevfloat(x)
+next_awayfrom_zero(x::Float16) = signbit(x) ? prevfloat(x) : nextfloat(x)
 
 
 end # module
