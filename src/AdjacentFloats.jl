@@ -4,6 +4,13 @@ export prev_float, next_float
 
 using Compat
 
+
+const IEEEFloat = Union{Float64, Float32, Float16}
+
+next_float{T<:IEEEFloat}(x::T) = signbit(x) ? next_nearerto_zero(x) : next_awayfrom_zero(x)
+prev_float{T<:IEEEFloat}(x::T) = signbit(x) ? next_awayfrom_zero(x) : next_nearerto_zero(x)
+
+
 # exact for |x| > 8.900295434028806e-308, otherwise may be two steps rather than one step. |x| > ldexp(0.5, -1019)
 next_nearerto_zero(x::Float64)   = muladd(0.9999999999999999, x, -5.0e-324)  # (x-1.1102230246251568e-16*x)-5.0e-324 
 next_awayfrom_zero(x::Float64)   = muladd(1.0000000000000002, x, +5.0e-324)  # (x+1.1102230246251568e-16*x)+5.0e-324
@@ -16,11 +23,6 @@ next_awayfrom_zero(x::Float32)   = muladd(1.00000010f0, x, +1.435f-42)       # (
 # which is quite coarse, we do not use that here. Exact for all finite Float16s.
 next_nearerto_zero(x::Float16) = (x < 0) ? nextfloat(x) : prevfloat(x)
 next_awayfrom_zero(x::Float16) = (x < 0) ? prevfloat(x) : nextfloat(x)
-
-const IEEEFloat = Union{Float64, Float32, Float16}
-
-next_float{T<:IEEEFloat}(x::T) = signbit(x) ? next_nearerto_zero(x) : next_awayfrom_zero(x)
-prev_float{T<:IEEEFloat}(x::T) = signbit(x) ? next_awayfrom_zero(x) : next_nearerto_zero(x)
 
 
 end # module
