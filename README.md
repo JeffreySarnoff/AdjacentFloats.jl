@@ -5,6 +5,8 @@ Faster versions of nextfloat, prevfloat that work similarly.
 ## exports
 next_float, prev_float
 
+-----------
+
 ### notes
 These routines return +/-Inf when given +/-Inf.    
 That differs from nextfloat(-Inf) == -realmax(), prevfloat(Inf) == realmax()    
