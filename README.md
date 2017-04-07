@@ -1,5 +1,15 @@
 # AdjacentFloats.jl
-Faster versions of nextfloat, prevfloat that work similarly.
+
+### Faster versions of nextfloat, prevfloat that work similarly.
+
+
+#### Copyright © 2017 by Jeffrey Sarnoff.  Released under the MIT License.
+
+-----
+
+[![Build Status](https://travis-ci.org/JeffreySarnoff/AdjacentFloats.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/AdjacentFloats.jl)   (Julia v0.6)
+
+-----
 
 
 ## exports
