@@ -1,6 +1,11 @@
 # AdjacentFloats.jl
 Faster versions of nextfloat, prevfloat that work similarly.
 
+
+## exports
+next_float, prev_float
+
+## notes
 These routines return +/-Inf when given +/-Inf.    
 That differs from nextfloat(-Inf) == -realmax(), prevfloat(Inf) == realmax()    
 (prevfloat(Inf)==Inf makes more sense to me, and likely is more helpful).    
@@ -9,7 +14,7 @@ And they step twice when given values of very small magnitude (see paper).
 The alternative implementation, converting to [U]Int and adding/subtracting 1,    
 returns NaN when given +/-Inf; and checking for Inf adds branching.    
 
-refs:   
+## references   
 
 Siegfried Rump, Paul Zimmermann, Sylvie Boldo, Guillaume Melquiond.    
 Computing predecessor and successor in rounding to nearest.    
