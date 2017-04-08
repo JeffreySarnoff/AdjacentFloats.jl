@@ -2,8 +2,6 @@ module AdjacentFloats
 
 export prev_float, next_float
 
-using Compat
-
 
 const IEEE754 = Union{Float64, Float32, Float16}
 
