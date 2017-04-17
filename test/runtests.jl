@@ -1,6 +1,9 @@
 using AdjacentFloats
 using Base.Test
 
+@test prev_float(3.0) == prevfloat(3.0)
+@test next_float(3.0) == nextfloat(3.0)
+
 @test prev_float(sqrt(2.0)) == prevfloat(sqrt(2.0))
 @test next_float(sqrt(2.0)) == nextfloat(sqrt(2.0))
 
