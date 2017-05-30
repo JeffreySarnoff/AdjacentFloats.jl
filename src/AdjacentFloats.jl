@@ -12,12 +12,12 @@ prev_float{T<:IEEE754}(x::T) = signbit(x) ? next_awayfrom_zero(x) : next_nearert
 
 function next_float(x::Float64)
     x == -Inf && return -realmax(x)
-    return x + (copysign(eps64, x) * x) + copysign(5.0e-324, x)
+    return (x + (copysign(eps64, x) * x)) + copysign(5.0e-324, x)
 end
 
-function prev_float{T<:IEEE754}(x::Float64)
+function prev_float(x::Float64)
     x == +Inf && return realmax(x)
-    return x - (copysign(eps64, x) * x) - copysign(5.0e-324, x)
+    return (x - (copysign(eps64, x) * x)) - copysign(5.0e-324, x)
 end
 
 
