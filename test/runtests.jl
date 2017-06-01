@@ -1,11 +1,24 @@
 using AdjacentFloats
 using Base.Test
 
-@test prev_float(3.0) == prevfloat(3.0)
-@test next_float(3.0) == nextfloat(3.0)
+@testset "AdjacentFloats" begin
 
-@test prev_float(sqrt(2.0)) == prevfloat(sqrt(2.0))
-@test next_float(sqrt(2.0)) == nextfloat(sqrt(2.0))
+    for (f, g) in ( (prev_float, prevfloat),
+                    (next_float, nextfloat) )
 
-@test prev_float(sqrt(0.25)) == prevfloat(sqrt(0.25))
-@test next_float(sqrt(0.25)) == nextfloat(sqrt(0.25))
+        @testset "Tests for $f" begin
+
+            for x in (1.0, 3.0, sqrt(2.0), sqrt(0.25),
+                      1e-10, 1e10, 1e300, 1e-300, Inf)
+
+                @test f(x) == g(x)
+                @test f(-x) == g(-x)
+            end
+        end
+    end
+
+    @testset "NaN" begin
+        @test isnan(prev_float(NaN))
+        @test isnan(next_float(NaN))
+    end
+end
