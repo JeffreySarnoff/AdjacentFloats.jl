@@ -6,12 +6,13 @@ using Base.Test
     for (f, g) in ( (prev_float, prevfloat),
                     (next_float, nextfloat) )
 
-        @testset "$f" begin
+        @testset "Tests for $f" begin
 
-            for x in (1.0, -1.0, 3.0, sqrt(2.0), sqrt(0.25),
-                        Inf, -Inf)
+            for x in (1.0, 3.0, sqrt(2.0), sqrt(0.25),
+                      1e-10, 1e10, 1e300, 1e-300, Inf)
 
                 @test f(x) == g(x)
+                @test f(-x) == g(-x)
             end
         end
     end
