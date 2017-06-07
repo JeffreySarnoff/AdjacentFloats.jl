@@ -6,6 +6,8 @@ export prev_float, next_float
 const IEEE754 = Union{Float64, Float32, Float16}
 
 const eps64 = 1.1102230246251568e-16
+const eps32 = 1.1920929f-7
+const eps16 = Float16(0.000977)
 
 next_float{T<:IEEE754}(x::T) = signbit(x) ? next_nearerto_zero(x) : next_awayfrom_zero(x)
 prev_float{T<:IEEE754}(x::T) = signbit(x) ? next_awayfrom_zero(x) : next_nearerto_zero(x)
@@ -20,6 +22,15 @@ function prev_float(x::Float64)
     return (x - (copysign(eps64, x) * x)) - copysign(5.0e-324, x)
 end
 
+function next_float(x::Float32)
+    x == -Inf32 && return -realmax(x)
+    return (x + (copysign(eps32, x) * x)) + copysign(1.435f-42, x)
+end
+
+function prev_float(x::Float32)
+    x == +Inf32 && return realmax(x)
+    return (x - (copysign(eps32, x) * x)) - copysign(-1.435f-42, x)
+end
 
 # exact for |x| > 8.900295434028806e-308, otherwise may be two steps rather than one step. |x| > ldexp(0.5, -1019)
 @inline next_nearerto_zero(x::Float64)   = (x-1.1102230246251568e-16*x)-5.0e-324
