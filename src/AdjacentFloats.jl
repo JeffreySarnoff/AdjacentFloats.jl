@@ -32,6 +32,9 @@ function prev_float(x::Float32)
     return (x - (copysign(eps32, x) * x)) - copysign(-1.435f-42, x)
 end
 
+prev_float(x::Float16) = prevfloat(x)
+next_float(x::Float16) = nextfloat(x)
+
 # exact for |x| > 8.900295434028806e-308, otherwise may be two steps rather than one step. |x| > ldexp(0.5, -1019)
 @inline next_nearerto_zero(x::Float64)   = (x-1.1102230246251568e-16*x)-5.0e-324
 @inline next_awayfrom_zero(x::Float64)   = (x+1.1102230246251568e-16*x)+5.0e-324
