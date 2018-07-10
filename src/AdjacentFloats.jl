@@ -24,8 +24,7 @@ end
 end
 
 @inline next_nearerto_zero(x::Float64) = -fma(+1.1102230246251568e-16, x, -x) + 5.0e-324
-@inline next_awayfrom_zero(x::Float64) =  fma(+1.1102230246251568e-16, x,  x) + 5.0e-324
-
+@inline next_awayfrom_zero(x::Float64) =  fma(+1.1102230246251568e-16, x,  x) - 5.0e-324
 
 function next_float(x::Float32)
     x !== -Inf32 && return next_float_signed(x) 
@@ -46,7 +45,7 @@ end
 end
 
 @inline next_nearerto_zero(x::Float32) = -fma(+5.960465f-8, x, -x) + 1.435f-42
-@inline next_awayfrom_zero(x::Float32) =  fma(+5.960465f-8, x,  x) + 1.435f-42
+@inline next_awayfrom_zero(x::Float32) =  fma(+5.960465f-8, x,  x) - 1.435f-42
 
 
 function next_float(x::Float16)
