@@ -9,8 +9,8 @@ const eps64 = 1.1102230246251568e-16
 const eps32 = 1.1920929f-7
 const eps16 = Float16(0.000977)
 
-next_float{T<:IEEE754}(x::T) = signbit(x) ? next_nearerto_zero(x) : next_awayfrom_zero(x)
-prev_float{T<:IEEE754}(x::T) = signbit(x) ? next_awayfrom_zero(x) : next_nearerto_zero(x)
+next_float(x::T) where {T<:IEEE754} = signbit(x) ? next_nearerto_zero(x) : next_awayfrom_zero(x)
+prev_float(x::T) where {T<:IEEE754} = signbit(x) ? next_awayfrom_zero(x) : next_nearerto_zero(x)
 
 function next_float(x::Float64)
     x == -Inf && return -realmax(x)
