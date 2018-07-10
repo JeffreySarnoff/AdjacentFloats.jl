@@ -7,7 +7,7 @@
 
 -----
 
-[![Build Status](https://travis-ci.org/JeffreySarnoff/AdjacentFloats.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/AdjacentFloats.jl)   (Julia v0.6)
+[![Build Status](https://travis-ci.org/JeffreySarnoff/AdjacentFloats.jl.svg?branch=master)](https://travis-ci.org/JeffreySarnoff/AdjacentFloats.jl)
 
 -----
 
