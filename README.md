@@ -1,5 +1,8 @@
 # AdjacentFloats.jl
 
+## OBSOLETE (just use prevfloat, nextfloat)
+
+
 ### Versions of nextfloat, prevfloat that are at least as fast.
 
 
