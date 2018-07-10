@@ -7,7 +7,7 @@ import Base: nextfloat, prevfloat
 
 function next_float(x::Float64)
     x !== -Inf && return next_float_signed(x) 
-    return realmin(Float64)
+    return -realmax(Float64)
 end
 
 function prev_float(x::Float64)
@@ -29,7 +29,7 @@ end
 
 function next_float(x::Float32)
     x !== -Inf32 && return next_float_signed(x) 
-    return realmin(Float32)
+    return -realmax(Float32)
 end
 
 function prev_float(x::Float32)
@@ -51,12 +51,12 @@ end
 
 function next_float(x::Float16)
     x !== -Inf16 && return next_float_signed(x) 
-    return realmin(Float32)
+    return -realmax(Float16)
 end
 
 function prev_float(x::Float16)
     x !== Inf16 && return prev_float_signed(x) 
-    return realmax(Float32)
+    return realmax(Float16)
 end
 
 @inline function prev_float_signed(x::Float16)
