@@ -1,6 +1,6 @@
 # AdjacentFloats.jl
 
-### Faster versions of nextfloat, prevfloat that work similarly.
+### Versions of nextfloat, prevfloat that are at least as fast.
 
 
 #### Copyright © 2017 by Jeffrey Sarnoff.  Released under the MIT License.
@@ -14,16 +14,9 @@
 
 ## exports
 next_float, prev_float    
-*they run twice as fast as nextfloat, prevfloat (or better)*
 
 -----------
 
-### notes
-These routines return +/-Inf when given +/-Inf.    
-That differs from nextfloat(-Inf) == -realmax(), prevfloat(Inf) == realmax()    
-* prevfloat(Inf)==Inf makes more sense to me, and likely is more helpful
-
-They may step as much as two times when given values of very small magnitude (see paper).    
 
 ### references   
 
