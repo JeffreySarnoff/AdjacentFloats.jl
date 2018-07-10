@@ -1,5 +1,5 @@
 using AdjacentFloats
-using Base.Test
+using Test
 
 @testset "AdjacentFloats" begin
 
