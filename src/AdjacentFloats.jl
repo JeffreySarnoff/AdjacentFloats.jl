@@ -9,9 +9,12 @@ const halfeps(::Type{Float16}) = eps(Float16)/2
 const leastfloat(::Type{Float64}) = nextfloat(zero(Float64))
 const leastfloat(::Type{Float32}) = nextfloat(zero(Float32))
 const leastfloat(::Type{Float16}) = nextfloat(zero(Float16))
+const negleastfloat(::Type{Float64}) = -nextfloat(zero(Float64))
+const negleastfloat(::Type{Float32}) = -nextfloat(zero(Float32))
+const ngeleastfloat(::Type{Float16}) = -nextfloat(zero(Float16))
 
-next_nearerto_zero(x::T) where {T} = -fma(halfeps(T), x, -x) + leastfloat(T)
-next_awayfrom_zero(x::T) where {T} =  fma(halfeps(T), x,  x) - leastfloat(T)
+next_nearerto_zero(x::T) where {T} = leastfloat(T) - fma(halfeps(T), x, -x)
+next_awayfrom_zero(x::T) where {T} =  negleastfloat(T) + fma(halfeps(T), x,  x)
 
 @inline function prev_float_signed(x::T) where {T}
     signbit(x) ? next_awayfrom_zero(x) : next_nearerto_zero(x)
