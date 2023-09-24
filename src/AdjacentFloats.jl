@@ -11,7 +11,7 @@ const leastfloat(::Type{Float32}) = nextfloat(zero(Float32))
 const leastfloat(::Type{Float16}) = nextfloat(zero(Float16))
 const negleastfloat(::Type{Float64}) = -nextfloat(zero(Float64))
 const negleastfloat(::Type{Float32}) = -nextfloat(zero(Float32))
-const ngeleastfloat(::Type{Float16}) = -nextfloat(zero(Float16))
+const negleastfloat(::Type{Float16}) = -nextfloat(zero(Float16))
 
 next_nearerto_zero(x::T) where {T} = leastfloat(T) - fma(halfeps(T), x, -x)
 next_awayfrom_zero(x::T) where {T} =  negleastfloat(T) + fma(halfeps(T), x,  x)
